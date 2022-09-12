@@ -18,7 +18,7 @@ markup:
     ordered: no
     startLevel: 1
 author:
-  bio: _Namaste!_  I am Sneha from India
+  bio: _Namaste!_ I am Sneha from India
   # gravatarEmail: sramteke.mam2023@london.edu
   job: Masters in Analytics and Management fellow at London Business School
   location: London
@@ -52,10 +52,10 @@ menu:
       pre: <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
       url: /
       weight: 1
-    - identifier: categories
-      name: Categories
-      pre: <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
-      url: /categories
+    - identifier: about
+      name: About
+      pre: <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      url: /#about
       weight: 2
     # - identifier: tags
     #   name: Tags

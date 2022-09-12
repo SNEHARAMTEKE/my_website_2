@@ -1,7 +1,7 @@
 baseURL: https://sneharamteke.netlify.app/
 languageCode: en-us
 defaultContentLanguage: en-us
-title: Portfolio website for Kostis Christodoulou
+title: Portfolio website 
 theme: hugo-tranquilpeak-theme
 disqusShortname: hugo-tranquilpeak-theme
 paginate: 7
@@ -19,11 +19,11 @@ markup:
     startLevel: 1
 author:
   bio: _Namaste!_ I am Sneha from India
-  gravatarEmail: sramteke.mam2023@london.edu
+  # gravatarEmail: sramteke.mam2023@london.edu
   job: Masters in Analytics and Management fellow at London Business School
   location: London
   name: Sneha Ramteke
-  picture: images/Spiti.jpg
+  picture: images/Sneha2.JPG
 menu:
   links:
     - identifier: github
@@ -57,21 +57,21 @@ menu:
       pre: <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
       url: /categories
       weight: 2
-    - identifier: tags
-      name: Tags
-      pre: <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
-      url: /tags
-      weight: 3
-    - identifier: archives
-      name: Archives
-      pre: <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
-      url: /archives
-      weight: 4
-    - identifier: about
-      name: About
-      pre: <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
-      url: /#about
-      weight: 5
+    # - identifier: tags
+    #   name: Tags
+    #   pre: <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+    #   url: /tags
+    #   weight: 3
+    # - identifier: archives
+    #   name: Archives
+    #   pre: <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+    #   url: /archives
+    #   weight: 4
+    # - identifier: about
+    #   name: About
+    #   pre: <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+    #   url: /#about
+    #   weight: 5
   misc:
     - identifier: rss
       name: RSS
@@ -93,7 +93,7 @@ params:
         language: en
         pagerDirection: first
         perPage: 10
-  coverImage: images/Sneha.jpg
+  coverImage: images/Spiti2.jpg
   customJS:
     - async: yes
       crossorigin: anonymous

@@ -18,10 +18,10 @@ markup:
     ordered: no
     startLevel: 1
 author:
-  bio: Super bio with markdown support **COOL**
-  gravatarEmail: thibaud.lepretre@gmail.com
+  bio: _Namaste!_ I am Sneha from India
+  gravatarEmail: sramteke.mam2023@london.edu
   job: Your job title
-  location: France
+  location: London
   name: Sneha Ramteke
   picture: https://drive.google.com/file/d/1y9vLYfQrl4wBzbHIDpMqvFwUF_xWEB_8/view?usp=sharing
 menu:
@@ -29,12 +29,12 @@ menu:
     - identifier: github
       name: GitHub
       pre: <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
-      url: https://github.com/kakawait
+      url: https://github.com/SNEHARAMTEKE
       weight: 1
-    - identifier: stackoverflow
-      name: Stack Overflow
-      pre: <i class="sidebar-button-icon fab fa-lg fa-stack-overflow" aria-hidden="true"></i>
-      url: https://stackoverflow.com/users/636472/kakawait
+    - identifier: linkedin
+      name: LinkedIn
+      pre: <i class="sidebar-button-icon fab fa-lg fa-linkedin" aria-hidden="true"></i>
+      url: www.linkedin.com/in/ramtekesneha
       weight: 2
   main:
     - identifier: home

@@ -20,7 +20,7 @@ markup:
 author:
   bio: _Namaste!_ I am Sneha from India
   gravatarEmail: sramteke.mam2023@london.edu
-  job: Your job title
+  job: Masters in Analytics and Management fellow at London Business School
   location: London
   name: Sneha Ramteke
   picture: images/Spiti.jpg
@@ -46,12 +46,12 @@ menu:
       pre: <i class="sidebar-button-icon fab fa-lg fa-facebook" aria-hidden="true"></i>
       url: https://www.facebook.com/profile.php?id=100009618341407
       weight: 4
-  # main:
-  #   - identifier: home
-  #     name: Home
-  #     pre: <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
-  #     url: /
-  #     weight: 1
+  main:
+    - identifier: home
+      name: Home
+      pre: <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      url: /
+      weight: 1
   #   - identifier: categories
   #     name: Categories
   #     pre: <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>

@@ -34,7 +34,7 @@ menu:
     - identifier: linkedin
       name: LinkedIn
       pre: <i class="sidebar-button-icon fab fa-lg fa-linkedin" aria-hidden="true"></i>
-      url: www.linkedin.com/in/ramtekesneha
+      url: https://www.linkedin.com/in/ramtekesneha/
       weight: 2
   main:
     - identifier: home

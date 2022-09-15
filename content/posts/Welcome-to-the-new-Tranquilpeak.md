@@ -9,15 +9,15 @@ date: "2022-09-15"
 # - disqus
 # - google
 # - gravatar
-metaAlignment: center
+metaAlignment: top
 # tags:
 # - hexo theme
 # - responsive
 # - gravatar
 # - disqus
 # - google analytics
-thumbnailImage: images/about_me.JPG
-thumbnailImagePosition: top
+# thumbnailImage: images/about_me.JPG
+# thumbnailImagePosition: top
 title: About Me
 ---
 

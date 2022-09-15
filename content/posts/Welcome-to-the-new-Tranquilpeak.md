@@ -18,7 +18,7 @@ tags:
 - google analytics
 thumbnailImage: //d1u9biwaxjngwg.cloudfront.net/welcome-to-tranquilpeak/city-750.jpg
 thumbnailImagePosition: top
-title: Welcome to Tranquilpeak 0.5.3-BETA
+title: Sneha First RMD
 ---
 Tranquilpeak is a gorgeous responsive theme for Hugo blog framework. It has many features and integrated services to improve user experience.
 <!--more-->

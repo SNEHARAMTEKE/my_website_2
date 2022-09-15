@@ -33,5 +33,4 @@ Sometimes, you may find me deeply engrosed in a book. I could never imagine myse
 
 ![Imgur](https://i.imgur.com/DLGhLel.png)
 
-![Imgur](https://i.imgur.com/jZVELxq.jpg)
 

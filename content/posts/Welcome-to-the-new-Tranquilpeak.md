@@ -16,12 +16,12 @@ metaAlignment: top
 # - gravatar
 # - disqus
 # - google analytics
-# thumbnailImage: images/about_me.JPG
-# thumbnailImagePosition: top
+thumbnailImage: images/Spiti.jpg
+thumbnailImagePosition: top
 title: About Me
 ---
 
-
+Hello! I am Sneha Ramteke. I am from India. I moved to London in August 2022 to pursue Masters in Analytics and Management from London Business School. 
 Tranquilpeak is a gorgeous responsive theme for Hugo blog framework. It has many features and integrated services to improve user experience.
 <!--more-->
 

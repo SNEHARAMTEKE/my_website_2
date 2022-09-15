@@ -1,22 +1,22 @@
 ---
 autoThumbnailImage: false
-categories:
-- tranquilpeak
-- releases
+# categories:
+# - tranquilpeak
+# - releases
 coverImage: images/about_me.JPG
 date: "2022-09-15"
-keywords:
-- disqus
-- google
-- gravatar
+# keywords:
+# - disqus
+# - google
+# - gravatar
 metaAlignment: center
-tags:
-- hexo theme
-- responsive
-- gravatar
-- disqus
-- google analytics
-thumbnailImage: //d1u9biwaxjngwg.cloudfront.net/welcome-to-tranquilpeak/city-750.jpg
+# tags:
+# - hexo theme
+# - responsive
+# - gravatar
+# - disqus
+# - google analytics
+thumbnailImage: images/about_me.JPG
 thumbnailImagePosition: top
 title: About Me
 ---

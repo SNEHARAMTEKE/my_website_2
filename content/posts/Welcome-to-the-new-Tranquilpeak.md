@@ -3,8 +3,8 @@ autoThumbnailImage: false
 categories:
 - tranquilpeak
 - releases
-coverImage: //d1u9biwaxjngwg.cloudfront.net/welcome-to-tranquilpeak/city.jpg
-date: "2015-06-15"
+coverImage: images/about_me.JPG
+date: "2022-09-15"
 keywords:
 - disqus
 - google
@@ -18,7 +18,7 @@ tags:
 - google analytics
 thumbnailImage: //d1u9biwaxjngwg.cloudfront.net/welcome-to-tranquilpeak/city-750.jpg
 thumbnailImagePosition: top
-title: Sneha First RMD
+title: About Me
 ---
 Tranquilpeak is a gorgeous responsive theme for Hugo blog framework. It has many features and integrated services to improve user experience.
 <!--more-->

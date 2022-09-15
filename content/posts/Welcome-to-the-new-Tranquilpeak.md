@@ -20,6 +20,8 @@ thumbnailImage: images/about_me.JPG
 thumbnailImagePosition: top
 title: About Me
 ---
+
+
 Tranquilpeak is a gorgeous responsive theme for Hugo blog framework. It has many features and integrated services to improve user experience.
 <!--more-->
 

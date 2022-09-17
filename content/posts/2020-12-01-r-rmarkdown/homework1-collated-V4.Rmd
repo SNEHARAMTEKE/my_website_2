@@ -1,7 +1,7 @@
 ---
 title: "Session 2: Homework 1"
 author: "Group 5: Arvind Sridhar, Sihan Lu, Sneha Ramteke, Wei Wu, Ioana-Daria Gherghelas, Sofya Lyuleva"
-date: "`r Sys.Date()`"
+date: 2022-09-16T21:13:14-05:00
 output:
   html_document:
     theme: flatly

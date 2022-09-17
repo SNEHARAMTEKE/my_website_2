@@ -1,26 +1,29 @@
 ---
-categories:
-- tranquilpeak
-- features
-coverImage: //d1u9biwaxjngwg.cloudfront.net/cover-image-showcase/city.jpg
-coverMeta: out
-date: "2015-05-13"
-metaAlignment: center
-tags:
-- cover image
-thumbnailImage: //d1u9biwaxjngwg.cloudfront.net/cover-image-showcase/city-750.jpg
+# categories:
+# - tranquilpeak
+# - showcase
+date: "2022-09-15"
+slug: Resume
+thumbnailImage: images/books.jpg
 thumbnailImagePosition: left
-title: Cover image showcase
+title: Books
 ---
 
-Tranquilpeak integrate a unique "cover image" feature. Open this post to see how this feature sublimate your article.
+I had never thought I would enjoy reading this much. Here you will find a few books I loved reading and my journey to becoming a bibliophile :) 
 
 <!--more-->
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget urna vitae velit eleifend interdum at ac nisi. In nec ligula lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed eu cursus erat, ut dapibus quam. Aliquam eleifend dolor vitae libero pharetra adipiscing. Etiam adipiscing dolor a quam tempor, eu convallis nulla varius. Aliquam sollicitudin risus a porta aliquam. Ut nec velit dolor. Proin eget leo lobortis, aliquam est sed, mollis mauris. Fusce vitae leo pretium massa accumsan condimentum. Fusce malesuada gravida lectus vel vulputate. Donec bibendum porta nibh ut aliquam.
-Sed lorem felis, congue non fringilla eu, aliquam eu eros. Curabitur orci libero, mollis sed semper vitae, adipiscing in lectus. Aenean non egestas odio. Donec sollicitudin nisi quis lorem gravida, in pharetra mauris fringilla. Duis sit amet faucibus dolor, id aliquam neque. In egestas, odio gravida tempor dictum, mauris felis faucibus purus, sit amet commodo lacus diam vitae est. Ut ut quam eget massa semper sodales. Aenean non ipsum cursus, blandit lectus in, ornare odio. Curabitur ultrices porttitor vulputate.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget urna vitae velit eleifend interdum at ac nisi. In nec ligula lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed eu cursus erat, ut dapibus quam. Aliquam eleifend dolor vitae libero pharetra adipiscing. Etiam adipiscing dolor a quam tempor, eu convallis nulla varius. Aliquam sollicitudin risus a porta aliquam. Ut nec velit dolor. Proin eget leo lobortis, aliquam est sed, mollis mauris. Fusce vitae leo pretium massa accumsan condimentum. Fusce malesuada gravida lectus vel vulputate. Donec bibendum porta nibh ut aliquam.
+As mentioned in the About Me section, you can call me an "accidental reader" as my venture into the world of books was a result of a literal accident. From my first book *The Alchemist* to the latest *The Psychology of Money*, I have explored different genres and writing styles. Although I enjoy fiction more than non-fiction, here are a few non-fiction books that I recommend reading:
 
-Sed lorem felis, congue non fringilla eu, aliquam eu eros. Curabitur orci libero, mollis sed semper vitae, adipiscing in lectus. Aenean non egestas odio. Donec sollicitudin nisi quis lorem gravida, in pharetra mauris fringilla. Duis sit amet faucibus dolor, id aliquam neque. In egestas, odio gravida tempor dictum, mauris felis faucibus purus, sit amet commodo lacus diam vitae est. Ut ut quam eget massa semper sodales. Aenean non ipsum cursus, blandit lectus in, ornare odio. Curabitur ultrices porttitor vulputate.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget urna vitae velit eleifend interdum at ac nisi. In nec ligula lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed eu cursus erat, ut dapibus quam. Aliquam eleifend dolor vitae libero pharetra adipiscing. Etiam adipiscing dolor a quam tempor, eu convallis nulla varius. Aliquam sollicitudin risus a porta aliquam. Ut nec velit dolor. Proin eget leo lobortis, aliquam est sed, mollis mauris. Fusce vitae leo pretium massa accumsan condimentum. Fusce malesuada gravida lectus vel vulputate. Donec bibendum porta nibh ut aliquam.
+* Rich dad poor dad
+* Atomic habits
+* The subtle art of not giving a fuck
+* The psychology of money
+* Sapiens
 
-Sed lorem felis, congue non fringilla eu, aliquam eu eros. Curabitur orci libero, mollis sed semper vitae, adipiscing in lectus. Aenean non egestas odio. Donec sollicitudin nisi quis lorem gravida, in pharetra mauris fringilla. Duis sit amet faucibus dolor, id aliquam neque. In egestas, odio gravida tempor dictum, mauris felis faucibus purus, sit amet commodo lacus diam vitae est. Ut ut quam eget massa semper sodales. Aenean non ipsum cursus, blandit lectus in, ornare odio. Curabitur ultrices porttitor vulputate.
+Coming to fiction, I have a lot to say in this section. I think *The Alchemist* is the best book to start reading. It is simple, short, easy going and inspiring. To explore more of Paulo Coelho's writings, I next read *Veronika decides to die* which is a psychological fiction and again a very amazing read. Inspired by events in Coelho's own life, *Veronika Decides to Die* questions the meaning of madness and celebrates individuals who do not fit into patterns society considers to be normal. Bold and illuminating, it is a dazzling portrait of a young woman at the crossroads of despair and liberation, and a poetic, exuberant appreciation of each day as a renewed opportunity.
+
+![Imgur](https://i.imgur.com/Od6mLzL.jpg)
+
+Another spectacular writer is Khaled Hosseini. I have read *The Kite Runner* quite a few time now, but I still long for the experience of reading it for the first time. It tells the story of Amir, a young boy from the Wazir Akbar Khan district of Kabul. The story is set against a backdrop of tumultuous events, from the fall of Afghanistan's monarchy through the Soviet invasion, the exodus of refugees to Pakistan and the United States, and the rise of the Taliban regime. The other two books by Hosseini, *A Thoushand Splendid Suns* and *And The Mountains Echoed* are very mesmerizing and must reads!
+
+![Imgur](https://i.imgur.com/I0AaeTR.jpg)

@@ -12,6 +12,7 @@ title: Books
 I had never thought I would enjoy reading this much. Here you will find a few books I loved reading and my journey to becoming a bibliophile :) 
 
 <!--more-->
+
 As mentioned in the About Me section, you can call me an "accidental reader" as my venture into the world of books was a result of a literal accident. From my first book *The Alchemist* to the latest *The Psychology of Money*, I have explored different genres and writing styles. Although I enjoy fiction more than non-fiction, here are a few non-fiction books that I recommend reading:
 
 * Rich dad poor dad

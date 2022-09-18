@@ -3,7 +3,7 @@
 # - tranquilpeak
 # - showcase
 date: "2022-09-15"
-slug: Resume
+slug: Books
 thumbnailImage: images/books.jpg
 thumbnailImagePosition: left
 title: Books
@@ -25,6 +25,28 @@ Coming to fiction, I have a lot to say in this section. I think *The Alchemist* 
 
 ![Imgur](https://i.imgur.com/Od6mLzL.jpg)
 
+
 Another spectacular writer is Khaled Hosseini. I have read *The Kite Runner* quite a few time now, but I still long for the experience of reading it for the first time. It tells the story of Amir, a young boy from the Wazir Akbar Khan district of Kabul. The story is set against a backdrop of tumultuous events, from the fall of Afghanistan's monarchy through the Soviet invasion, the exodus of refugees to Pakistan and the United States, and the rise of the Taliban regime. The other two books by Hosseini, *A Thoushand Splendid Suns* and *And The Mountains Echoed* are very mesmerizing and must reads!
 
 ![Imgur](https://i.imgur.com/I0AaeTR.jpg)
+
+Next, I would like to introduce a genre that I love reading - detective novels. Crime and thriller have always intrigued me and the fact that I came to love this genre is no surprise. Although I have read a lot of detective novels, the works of Agatha Christie are my favourite. Agatha Christie is an iconic mystery writer who is well-known for her cozy detective novels. I have read a lot of her novels and I aim to finish reading all of her works. Some of her must reads are:
+
+* The Mysterious Affair at Styles
+* The Murder of Roger Ackroyd
+* Murder on the Orient Express
+* And Then There Were None
+* Peril at End House
+
+![Imgur](https://i.imgur.com/bwQfJ2I.jpg)
+
+
+## Special Mentions 
+
+***The Night Circus*** is a book I received as a birthday gift and by far one of the best birthday presents. The Night Circus is a phantasmagorical fairy tale set near an ahistorical Victorian London in a wandering magical circus that is open only from sunset to sunrise. I have quite honestly never had the pleasure of reading a more beautiful book. I want to go back to the beginning and read it all over again. I just....I have no words.
+
+![Imgur](https://i.imgur.com/NiB5kXT.jpg)
+
+The book I am reading currently is  ***1984*** by George Orwell. George Orwell was a novelist, journalist, essayist and critic, best known for his novels ***Animal Farm*** and ***Nineteen Eighty-Four***. I read ***Animal Farm*** during college and loved how it introduced me to the world of political writing. The primary theme of this book is to warn readers of the dangers of totalitarianism. The central focus of the book is to convey the extreme level of control and power possible under a truly totalitarian regime. It explores how such a governmental system would impact society and the people who live in it.
+
+![Imgur](https://i.imgur.com/BwZqcB2.jpg)

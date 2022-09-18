@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Portfolio website</title>
+    <link>https://sneharamteke.netlify.app/</link>
+    <description>Recent content on Portfolio website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 16 Sep 2022 21:13:14 -0500</lastBuildDate><atom:link href="https://sneharamteke.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction</title>
+      <link>https://sneharamteke.netlify.app/2022/09/introduction/</link>
+      <pubDate>Fri, 16 Sep 2022 21:13:14 -0500</pubDate>
+      
+      <guid>https://sneharamteke.netlify.app/2022/09/introduction/</guid>
+      <description>This is a website created by me as an assignment for the Applied Statistics class at London Business School. This website is created using R and Netlify. I aim to give the user a quick glimpse into my life through this website. Lets Go!!</description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>https://sneharamteke.netlify.app/2022/09/about-me/</link>
+      <pubDate>Thu, 15 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://sneharamteke.netlify.app/2022/09/about-me/</guid>
+      <description>&lt;p&gt;Hello! I am Sneha Ramteke. I am from India. I moved to London in August 2022 to pursue Masters in Analytics and Management from London Business School. I graduated from the Indian Insititute of Technology, Kharagpur in 2020 with a Bachelors degree in Electrical Engineering and a Masters degree in Instrumentation and Signal Processing.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Books</title>
+      <link>https://sneharamteke.netlify.app/2022/09/books/</link>
+      <pubDate>Thu, 15 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://sneharamteke.netlify.app/2022/09/books/</guid>
+      <description>&lt;p&gt;I had never thought I would enjoy reading this much. Here you will find a few books I loved reading and my journey to becoming a bibliophile :)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Resume</title>
+      <link>https://sneharamteke.netlify.app/2022/09/resume/</link>
+      <pubDate>Wed, 14 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://sneharamteke.netlify.app/2022/09/resume/</guid>
+      <description>&lt;p&gt;Here you can find my professional resume.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Elements showcase</title>
+      <link>https://sneharamteke.netlify.app/2015/05/elements-showcase/</link>
+      <pubDate>Thu, 28 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sneharamteke.netlify.app/2015/05/elements-showcase/</guid>
+      <description>&lt;p&gt;Check out how Tranquilpeak theme display well HTML elements (title, paragraph, blockquote, table and more..). It&amp;rsquo;s simple and elegant.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>highlighted code showcase</title>
+      <link>https://sneharamteke.netlify.app/2015/03/highlighted-code-showcase/</link>
+      <pubDate>Mon, 23 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sneharamteke.netlify.app/2015/03/highlighted-code-showcase/</guid>
+      <description>&lt;p&gt;Tranquilpeak Hugo theme have its own theme to highlight source code. It&amp;rsquo;s based on GitHub theme: simple and elegant. Check out how it sublimate source codes.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tags plugins showcase</title>
+      <link>https://sneharamteke.netlify.app/2014/10/tags-plugins-showcase/</link>
+      <pubDate>Wed, 29 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://sneharamteke.netlify.app/2014/10/tags-plugins-showcase/</guid>
+      <description>&lt;p&gt;This post is used to show how tag plugins are displayed. See &lt;a href=&#34;https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#tags&#34;&gt;docs&lt;/a&gt; for more info.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Image gallery showcase</title>
+      <link>https://sneharamteke.netlify.app/2013/02/image-gallery-showcase/</link>
+      <pubDate>Mon, 18 Feb 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://sneharamteke.netlify.app/2013/02/image-gallery-showcase/</guid>
+      <description>&lt;p&gt;And here is the image gallery!&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

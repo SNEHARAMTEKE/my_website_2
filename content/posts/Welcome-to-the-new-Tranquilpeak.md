@@ -4,7 +4,7 @@ autoThumbnailImage: false
 # - tranquilpeak
 # - releases
 coverImage: images/about_me.JPG
-date: "2022-09-15"
+date: "2022-09-18"
 # keywords:
 # - disqus
 # - google

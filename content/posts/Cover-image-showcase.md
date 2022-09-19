@@ -2,7 +2,7 @@
 # categories:
 # - tranquilpeak
 # - showcase
-date: "2022-09-15"
+date: "2022-09-12"
 slug: Books
 thumbnailImage: images/books.jpg
 thumbnailImagePosition: left
@@ -38,7 +38,7 @@ Next, I would like to introduce a genre that I love reading - detective novels. 
 * And Then There Were None
 * Peril at End House
 
-![Imgur](https://i.imgur.com/bwQfJ2I.jpg)
+![Imgur](https://i.imgur.com/ahh2lhK.jpg)
 
 
 ## Special Mentions 
@@ -49,4 +49,4 @@ Next, I would like to introduce a genre that I love reading - detective novels. 
 
 The book I am reading currently is  ***1984*** by George Orwell. George Orwell was a novelist, journalist, essayist and critic, best known for his novels ***Animal Farm*** and ***Nineteen Eighty-Four***. I read ***Animal Farm*** during college and loved how it introduced me to the world of political writing. The primary theme of this book is to warn readers of the dangers of totalitarianism. The central focus of the book is to convey the extreme level of control and power possible under a truly totalitarian regime. It explores how such a governmental system would impact society and the people who live in it.
 
-![Imgur](https://i.imgur.com/BwZqcB2.jpg)
+![Imgur](https://i.imgur.com/c8Dq0lz.jpg)

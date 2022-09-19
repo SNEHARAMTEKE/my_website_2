@@ -2,7 +2,7 @@
 # categories:
 # - tranquilpeak
 # - showcase
-date: "2022-09-14"
+date: "2022-09-17"
 slug: Resume
 thumbnailImage: images/resume_intro.png
 thumbnailImagePosition: left

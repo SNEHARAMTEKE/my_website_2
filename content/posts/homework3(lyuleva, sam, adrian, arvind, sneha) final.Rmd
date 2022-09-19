@@ -2,7 +2,7 @@
 # categories:
 # - tranquilpeak
 # - showcase
-date: "2022-09-15"
+date: "2022-09-13"
 slug: Hyporthesis Testing and Regression
 thumbnailImage: images/regression.jpg
 thumbnailImagePosition: left

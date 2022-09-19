@@ -4,10 +4,14 @@
 # - showcase
 date: "2022-09-14"
 slug: Confidence Interval
-thumbnailImage: images/CI.jpg
+thumbnailImage: images/ci.png
 thumbnailImagePosition: left
 title: Confidence Interval
 ---
+
+Here you can find Confidence Interval analysis exercise in R
+
+<!--more-->
 
 ```{r, setup, include=FALSE}
 knitr::opts_chunk$set(

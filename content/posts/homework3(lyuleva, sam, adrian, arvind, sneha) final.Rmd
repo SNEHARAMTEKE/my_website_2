@@ -1,0 +1,547 @@
+---
+# categories:
+# - tranquilpeak
+# - showcase
+date: "2022-09-15"
+slug: Hyporthesis Testing and Regression
+thumbnailImage: images/regression.jpg
+thumbnailImagePosition: left
+title: Hyporthesis Testing and Regression
+---
+
+Here you can find a Hypothesis Testing and Regression exercise in R
+
+<!--more-->
+
+
+```{r, setup, echo=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+
+```{r load-libraries, echo=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(GGally)
+library(readxl)
+library(here)
+library(skimr)
+library(janitor)
+library(broom)
+library(tidyquant)
+library(infer)
+library(openintro)
+library(readxl)
+```
+
+
+# Youth Risk Behavior Surveillance
+
+Every two years, the Centers for Disease Control and Prevention conduct the [Youth Risk Behavior Surveillance System (YRBSS)](https://www.cdc.gov/healthyyouth/data/yrbs/index.htm) survey, where it takes data from high schoolers (9th through 12th grade), to analyze health patterns. You will work with a selected group of variables from a random sample of observations during one of the years the YRBSS was conducted.
+
+## Load the data
+
+This data is part of the `openintro` textbook and we can load and inspect it. There are observations on 13 different variables, some categorical and some numerical. The meaning of each variable can be found by bringing up the help file:
+
+?yrbss
+
+```{r}
+data(yrbss)
+glimpse(yrbss)
+```
+
+Before you carry on with your analysis, it's is always a good idea to check with `skimr::skim()` to get a feel for missing values, summary statistics of numerical variables, and a very rough histogram.
+
+## Exploratory Data Analysis
+
+You will first start with analyzing the `weight` of participants in kilograms. Using visualization and summary statistics, describe the distribution of weights. How many observations are we missing weights from?
+
+```{r, eda_on_weight}
+plot1 <- yrbss %>%
+  ggplot(aes(x=weight)) + 
+  geom_histogram() + labs(x="Distibution of Weights",y="Count",title="Histogram of DIstribution of Weights")
+plot1
+```
+
+```{r}
+summary(yrbss)  #finding the summary of the data to understand the mean, median, quartiles min,max and NA's
+```
+
+```{r}
+sum(is.na(yrbss$weight))   #code to calculate the number of NA's
+```
+
+We are missing weights from 1004 observations, which is roughly 7.5% of observations.
+
+Next, consider the possible relationship between a high schooler’s weight and their physical activity. Plotting the data is a useful first step because it helps us quickly visualize trends, identify strong associations, and develop research questions.
+
+```{r, plot}
+plot1 <- ggplot(yrbss,aes(y=weight,x=physically_active_7d))+geom_point() +geom_smooth(method="lm")
+plot1   #plot to find the relationship between a high schoolers weight and their physical activity
+
+yrbss %>% 
+  select(physically_active_7d, weight) %>% 
+  cor(use = "complete.obs") #comparing the same with the corr value to cross check if a correlation exists
+```
+
+
+Let’s create a new variable in the dataframe `yrbss`, called `physical_3plus` , which will be `yes` if they are physically active for at least 3 days a week, and `no` otherwise. You may also want to calculate the number and % of those who are and are not active for more than 3 days. RUse the `count()` function and see if you get the same results as `group_by()... summarise()`
+
+```{r mutate_and_count}
+physical_3plus <- yrbss %>%
+  count(physically_active_7d>=3)
+physical_3plus     #using count 
+
+physical_3 <- yrbss %>%
+  group_by(physically_active_7d) %>% 
+  summarise(physically_active=sum(count(physically_active_7d>=3))) %>% 
+  summarise(total_active = sum(physically_active)) 
+physical_3   #using group_by and summarise
+
+```
+Can you provide a 95% confidence interval for the population proportion of high schools that are *NOT* active 3 or more days per week?
+
+```{r confidence interval}
+data1 <- yrbss %>%
+  filter(physically_active_7d<3)
+data1  
+
+n <- count(data1)
+xbar <- mean(data1$physically_active_7d,na.rm=TRUE)
+s <- sd(data1$physically_active_7d,na.rm=TRUE)
+margin <- qt(0.975,as.integer(n-1))*s/sqrt(n)
+lower_interval <- xbar-margin
+upper_interval <- xbar+margin
+
+```  
+Make a boxplot of `physical_3plus` vs. `weight`. Is there a relationship between these two variables? What did you expect and why?
+
+```{r boxplot}
+physical_3plus <- yrbss %>%
+  mutate(final_result = ifelse(physically_active_7d>=3,'yes','no')) %>% 
+drop_na(final_result)
+physical_3plus  
+
+plot1 <- ggplot(physical_3plus,aes(x=final_result, y=weight)) + 
+  geom_boxplot()
+plot1
+
+```
+
+>From the boxplot we can see that there is no relation between physical3plus and weight. We expected to have no relation between these two variables as we already performed a corr test and found the value close 0. 
+
+## Confidence Interval
+
+Boxplots show how the medians of the two distributions compare, but we can also compare the means of the distributions using either a confidence interval or a hypothesis test. Note that when we calculate the mean, SD, etc. weight in these groups using the mean function, we must ignore any missing values by setting the `na.rm = TRUE`.
+
+
+```{r ci_using_formulas}
+physical_3plus %>% 
+  select(weight,final_result) %>% 
+  drop_na(weight,final_result) %>% 
+  group_by(final_result) %>% 
+  summarise(count = n(),
+            xbar = mean(weight),
+            s=sd(weight),
+            margin = qt(0.975,count-1),
+            lower_interval = xbar-margin,
+            upper_interval = xbar+margin)
+   
+```
+
+There is an observed difference of about 1.77kg (68.44 - 66.67), and we notice that the two confidence intervals do not overlap. It seems that the difference is at least 95% statistically significant. Let us also conduct a hypothesis test.
+
+## Hypothesis test with formula
+
+Write the null and alternative hypotheses for testing whether mean weights are different for those who exercise at least times a week and those who don’t.
+
+```{r t_test_using_R}
+
+t.test(weight ~ final_result, data = physical_3plus)
+
+```
+>Null Hypothesis: mean weights are same for those who exercise at least 3 times a week and those who don’t.
+Alternative Hypothesis: mean weights are different for those who exercise at least 3 times a week and those who don't
+t test value is greater than 2 and 95% confidence interval does not contain 0 hence we reject the null hypothesis. So, mean weights are different for those who exercise at least 3 times a week and those who don't.
+
+## Hypothesis test with `infer`
+Next, we will introduce a new function, `hypothesize`, that falls into the infer workflow. You will use this method for conducting hypothesis tests.
+
+But first, we need to initialize the test, which we will save as `obs_diff`.
+
+```{r calc_obs_difference}
+obs_diff <- physical_3plus %>%
+  drop_na(weight,final_result) %>% 
+  specify(weight ~ final_result) %>%
+  calculate(stat = "diff in means", order = c("yes", "no"))
+obs_diff
+```
+
+Notice how you can use the functions specify and calculate again like you did for calculating confidence intervals. Here, though, the statistic you are searching for is the difference in means, with the order being yes - no != 0.
+
+After you have initialized the test, you need to simulate the test on the null distribution, which we will save as null.
+
+
+```{r hypothesis_testing_using_infer_package}
+set.seed(1234) 
+null_dist <- physical_3plus %>%
+  drop_na(weight,final_result) %>% 
+  # specify variables
+  specify(weight ~ final_result) %>%
+  
+  # assume independence, i.e, there is no difference
+  hypothesize(null = "independence") %>%
+  
+  # generate 1000 reps, of type "permute"
+  generate(reps = 1000, type = "permute") %>%
+  
+  # calculate statistic of difference, namely "diff in means"
+  calculate(stat = "diff in means", order = c("yes", "no"))
+
+```
+
+
+Here, `hypothesize` is used to set the null hypothesis as a test for independence, i.e., that there is no difference between the two population means. In one sample cases, the null argument can be set to *point* to test a hypothesis relative to a point estimate.
+
+Also, note that the `type` argument within generate is set to permute, which is the argument when generating a null distribution for a hypothesis test.
+
+We can visualize this null distribution with the following code:
+
+```{r}
+ggplot(data = null_dist, aes(x = stat)) +
+  geom_histogram()
+
+```
+
+
+Now that the test is initialized and the null distribution formed, we can visualise to see how many of these null permutations have a difference of at least `obs_stat` of `r obs_diff %>% pull() %>% round(2)`?
+
+We can also calculate the p-value for your hypothesis test using the function `infer::get_p_value()`.
+
+```{r}
+
+null_dist %>% visualize() +
+  shade_p_value(obs_stat = obs_diff, direction = "two-sided")
+
+null_dist %>%
+  get_p_value(obs_stat = obs_diff, direction = "two_sided")
+
+```
+
+
+This the standard workflow for performing hypothesis tests.
+
+# IMDB ratings: Differences between directors
+
+Explore whether the mean IMDB rating for Steven Spielberg and Tim Burton are the same or not. Calculat the confidence intervals for the mean ratings of these two directors and check if they overlap. 
+
+```{r load-movies-data}
+movies <- read_csv(here::here("data", "movies.csv"))
+glimpse(movies)
+```
+
+
+```{r confidence_intervals for steven and tim}
+
+select_director = c('Steven Spielberg', 'Tim Burton')
+director_interval <- movies %>% 
+              # filter by interval
+              filter(director %in% select_director) %>% 
+              group_by(director) %>% 
+              # calculate summary statistics for ratings
+              summarize(mean_rating = mean(rating, na.rm=TRUE),
+                        sd_rating = sd(rating, na.rm=TRUE),
+                        count = n(),
+                        t_critical = qt(0.975, count - 1),
+                        se_rating = sd_rating/sqrt(count),
+                        error_margin = t_critical*se_rating,
+                        rating_low = mean_rating - error_margin,
+                        rating_high = mean_rating + error_margin) %>% 
+              select(director, mean_rating, rating_low, rating_high)
+
+director_interval 
+
+xmin_steven <- director_interval %>% 
+               filter(director == 'Steven Spielberg') %>%
+               select(rating_low) %>% 
+               pull()
+
+xmax_tim <- director_interval %>% 
+               filter(director == 'Tim Burton') %>%
+               select(rating_high) %>% 
+               pull()
+               
+  
+plot_ <- director_interval %>% 
+         ggplot(aes(mean_rating, director, colour = director)) + 
+         geom_point() +
+         geom_errorbarh(aes(xmin = rating_low, xmax = rating_high, y = director), width = 0.2, height = 0.2) + 
+         labs(y = "Mean IMDB Rating") +
+         geom_rect(aes(xmin = xmin_steven, xmax = xmax_tim, ymin = -Inf, ymax = Inf),
+            alpha = 1/5, fill = "grey", colour = NA) + 
+         theme_bw() +
+         theme(legend.position = "none")
+
+plot_
+```
+
+> Null Hypothesis: The mean IMDB rating for Steven Spielberg and Tim Burton are the same.
+  Alternative Hypothesis: The mean IMDB rating for Steven Spielberg and Tim Burton are not the same.
+  
+```{r hypothesis test}
+select_director = c('Steven Spielberg', 'Tim Burton')
+movies_select <- movies %>% 
+                 filter(director %in% select_director)
+mosaic::favstats(~rating, data = movies_select)
+mosaic::favstats(rating~director, data = movies_select)
+
+t.test(rating~director, data = movies_select)
+```
+
+> From the t-test, we can conclude that the mean IMDB rating for Steven Spielberg and Tim Burton are not the same. This is because t value is greater than 2 (=3) and 95% confidence interval does not contain 0. Also the pvalue is 0.01 which is less than 5% further supporting our conclusion. 
+
+```{r HT_infer}
+set.seed(1234)
+ratings_director <- movies_select %>%
+                        # Specify the variable of interest
+                        specify(rating ~ director) %>%
+                        # Hypothesize a null of no (or zero) difference
+                        hypothesize(null = "independence") %>%
+                        # Generate a bunch of simulated samples
+                        generate(reps = 1000, type ="permute") %>%
+                        # Find the mean difference of each sample
+                        calculate(stat = "diff in means",
+                        order = c('Steven Spielberg', 'Tim Burton'))
+
+steven_mean <- director_interval %>% 
+               filter(director == 'Steven Spielberg') %>%
+               select(mean_rating) %>% 
+               pull()
+
+tim_mean <- director_interval %>% 
+               filter(director == 'Tim Burton') %>%
+               select(mean_rating) %>% 
+               pull()
+observed_difference <- steven_mean - tim_mean
+ratings_director %>% get_pvalue(obs_stat = observed_difference, direction = "both")
+
+ratings_director %>% visualize() +
+                     annotate("rect", xmin = -Inf, xmax = -1*observed_difference, ymin = -Inf, ymax = Inf,
+                              alpha = 0.2, fill = "red", colour = NA) +
+                     annotate("rect", xmin = 1*observed_difference, xmax = Inf, ymin = -Inf, ymax = Inf,
+                              alpha = 0.2, fill = "red", colour = NA) + 
+                     geom_vline(xintercept = observed_difference, alpha = 0.75, colour = 'red', size = 2) +
+                     labs(x = "Average steven - tim IMDB rating", y = "Count", 
+                          title = "Differences in steven and tim average IMDB ratings",
+                          subtitle = "Observed difference in red") +
+                     theme_bw()
+```
+
+> The pvalue in this case is 0.008 which is less than 5%, hence we can conclude that the mean IMDB rating for Steven Spielberg and Tim Burton are not the same.
+
+# Omega Group plc- Pay Discrimination
+
+
+At the last board meeting of Omega Group Plc., the headquarters of a large multinational company, the issue was raised that women were being discriminated in the company, in the sense that the salaries were not the same for male and female executives. A quick analysis of a sample of 50 employees (of which 24 men and 26 women) revealed that the average salary for men was about 8,700 higher than for women. This seemed like a considerable difference, so it was decided that a further analysis of the company salaries was warranted. 
+
+You are asked to carry out the analysis. The objective is to find out whether there is indeed a significant difference between the salaries of men and women, and whether the difference is due to discrimination or whether it is based on another, possibly valid, determining factor. 
+
+## Loading the data
+
+
+```{r load_omega_data}
+omega <- read_csv(here::here("data", "omega.csv"))
+glimpse(omega) # examine the data frame
+```
+
+## Relationship Salary - Gender ?
+
+The data frame `omega`  contains the salaries for the sample of 50 executives in the company. Can you conclude that there is a significant difference between the salaries of the male and female executives?
+
+Note that you can perform different types of analyses, and check whether they all lead to the same conclusion 
+
+.	Confidence intervals
+.	Hypothesis testing
+.	Correlation analysis
+.	Regression
+
+```{r}
+# Confidence interval and hypothesis testing
+t.test(omega %>% 
+         filter (gender == 'male') %>%
+         select (salary), 
+      omega %>%
+      filter (gender == 'female') %>%
+      select (salary))
+```
+
+>The p-value is close to 0, so we reject the null hypothesis, which means that we have strong evidence that mean salaries for men and women are different.
+>Also, confidence interval does not include 0, which again indicates that mean salaries between men and women are different.
+
+```{r}  
+# Correlation analysis
+omega_num <- omega %>% 
+mutate(gender_01 = ifelse(gender=='male', 1, 0)) %>% # convert gender to numerical variable
+select(gender_01, salary) %>% # select certain columns
+cor()
+
+omega_num
+```
+
+>Correlation coefficient is 0.508 indicates weak correlation between gender and salary.
+
+```{r}  
+# Regression
+lm_omega <- lm(formula = salary ~ gender, data = omega) # run a linear regression of salary on gender
+summary(lm_omega)
+```
+
+>R-squared  is 0.258 (which is exactly correlation coefficient squared), which indicates that only 25% of variation in salary is explained by gender. Also, gendermale ciefficient is statistically significant.
+>Overall, we can say that there is evidence of correlation between gender and salary.
+
+Calculate summary statistics on salary by gender. Also, create and print a dataframe where, for each gender, you show the mean, SD, sample size, the t-critical, the SE, the margin of error, and the low/high endpoints of a 95% condifence interval
+
+```{r, confint_single_valiables}
+# Summary Statistics of salary by gender
+summary_stats <- mosaic::favstats (salary ~ gender, data=omega)
+summary_stats
+
+# Dataframe with two rows (male-female) and having as columns gender, mean, SD, sample size, 
+# the t-critical value, the standard error, the margin of error, 
+# and the low/high endpoints of a 95% condifence interval
+
+summary_stats %>%
+  mutate(t_crit = qt(0.95, df=n-1), std_err = sd/sqrt(n), margin_err=t_crit*sd/sqrt(n), low_end=mean-margin_err, high_end=mean+margin_err) %>%
+  select(gender, mean, sd, n, t_crit, std_err, margin_err, low_end, high_end)
+```
+
+> What can you conclude from your analysis? A couple of sentences would be enough
+>Confidence intervals do not overlap, so we have strong evidence that mean salaries for men and women are different. 
+
+You can also run a hypothesis testing, assuming as a null hypothesis that the mean difference in salaries is zero, or that, on average, men and women make the same amount of money. You should tun your hypothesis testing using `t.test()` and with the simulation method from the `infer` package.
+
+```{r, hypothesis_testing}
+# hypothesis testing using t.test() 
+t.test(omega %>% 
+         filter (gender == 'female') %>%
+         select (salary), 
+      omega %>%
+        filter (gender == 'male') %>%
+        select (salary))
+
+# hypothesis testing using infer package
+t_test(
+  omega,
+  formula =  salary ~ gender
+)
+```
+
+> What can you conclude from your analysis? A couple of sentences would be enough
+>The p-values are less then 0.01, which indicates that there is strong evidence that mean salaries for women and men are different. The confidence interval for the mean is (-12973, -4420).
+
+## Relationship Experience - Gender?
+
+At the board meeting, someone raised the issue that there was indeed a substantial difference between male and female salaries, but that this was attributable to other reasons such as differences in experience. A questionnaire send out to the 50 executives in the sample reveals that the average experience of the men is approximately 21 years, whereas the women only have about 7 years experience on average (see table below).
+
+```{r, experience_stats}
+# Summary Statistics of salary by gender
+favstats (experience ~ gender, data=omega)
+
+```
+
+Based on this evidence, can you conclude that there is a significant difference between the experience of the male and female executives? Perform similar analyses as in the previous section. Does your conclusion validate or endanger your conclusion about the difference in male and female salaries?  
+
+The standard deviation is pretty high, so we should definitely perform additional analyses to make a conclusion.
+
+```{r}
+# Confidence interval and hypothesis testing
+t.test(omega %>% 
+         filter (gender == 'male') %>%
+         select (experience), 
+      omega %>%
+      filter (gender == 'female') %>%
+      select (experience))
+```
+The p-value is close to 0, so we reject the null hypothesis, which means that we have strong evidence that mean experience for men and women are different.
+
+Just as in case of salary, confidence interval does not include 0, which again indicates different mean experience for men and women.
+
+```{r}  
+# Correlation analysis
+omega_num_exp <- omega %>% 
+mutate(gender_01 = ifelse(gender=='male', 1, 0)) %>% # convert gender to numerical variable
+select(gender_01, experience, salary) # select certain columns
+
+omega_num_exp %>%
+select(gender_01, experience) %>%
+cor()
+```
+Correlation coefficient of 0.584 indicates moderate correlation between gender and experience.
+
+```{r}  
+# Regression
+lm_omega_2 <- lm(formula = experience ~ gender_01, data = omega_num_exp) # run a linear regression of experience on gender
+summary(lm_omega_2)
+```
+Base on the R-squared value, we can say that 32% of variation in experience is explained by variation in gender. If a person is male instead of a female, the mean experience is expected to be 13.74 years more (statistically significant), all else equal. I think this analysis might endanger the results of previous analyses because if experience varies a lot between genders, it might be that variation in salaries is actually explained by variation in experience and when we don't include experience into the model, it captures partial effect through gender (omitted variable bias).
+
+We can make a multiple regression model.
+
+```{r}  
+# Regression
+lm_omega_2 <- lm(formula = salary ~ gender_01 + experience, data = omega_num_exp) # run a linear regression of experience on gender
+summary(lm_omega_2)
+```
+From this model we can see that when we include both experience and gender as independent variables, gender coefficient is not statistically significant but the coefficient for experience is. So when we omit the experience from the model, gender coefficient becomes sginificant while in reality it is not.
+
+## Relationship Salary - Experience ?
+
+Someone at the meeting argues that clearly, a more thorough analysis of the relationship between salary and experience is required before any conclusion can be drawn about whether there is any gender-based salary discrimination in the company.
+
+Analyse the relationship between salary and experience. Draw a scatterplot to visually inspect the data
+```{r, salary_exp_scatter}
+ggplot(data = omega, aes(x = experience, y = salary))+
+  geom_point(alpha=0.3) +
+  geom_smooth(method = "lm") + 
+  theme_bw() +
+  labs(title = "Relationship between salary and experience", x = "Experience in years", y="Yearly salary in $")
+
+```
+It seems like there is a positive relationship between experience and salary. 
+```{r}
+# Regression
+lm_omega_2 <- lm(formula = salary ~ experience, data = omega_num_exp) # run a linear regression of experience on gender
+summary(lm_omega_2)
+```
+The regression model confirms strong positive relationship as well. On average, additional year of experience increases yearly salary by $584.
+
+## Check correlations between the data
+You can use `GGally:ggpairs()` to create a scatterplot and correlation matrix. Essentially, we change the order our variables will appear in and have the dependent variable (Y), salary, as last in our list. We then pipe the dataframe to `ggpairs()` with `aes` arguments to colour by `gender` and make ths plots somewhat transparent (`alpha  = 0.3`).
+
+```{r, ggpairs}
+omega %>% 
+  select(gender, experience, salary) %>% #order variables they will appear in ggpairs()
+  ggpairs(aes(colour=gender, alpha = 0.3))+
+  theme_bw()
+```
+
+> We see a positive correlation between salary and experience. The reason why we initially thought there was pay discrimination is because, on average, women have less experience (more pink dots on the left) and men have more (more blue dots on the right).
+
+
+
+
+
+

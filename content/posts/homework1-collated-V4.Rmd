@@ -2,7 +2,7 @@
 # categories:
 # - tranquilpeak
 # - showcase
-date: "2022-09-18"
+date: "2022-09-13"
 slug: EDA in R
 thumbnailImage: images/eda.jpg
 thumbnailImagePosition: left
@@ -13,8 +13,20 @@ Here you can find a basic Exploratory Data Analysis exercise in R
 
 <!--more-->
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(collapse = TRUE)
+```{r, setup, echo=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
 ```
 
 ```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
@@ -77,7 +89,7 @@ What are the variable types? Do they all correspond to what they really are? Whi
 > There are mainly two types of variables double(numeric) and character(categorical). All the columns except date and year have correct datatypes. Dates can be converted to time data types to facilitate time series analysis. Description variable has the most missing values.
 
 ```{r skim_data}
-# YOUR CODE GOES HERE
+
 skimr::skim(rent)
 
 ```
@@ -161,6 +173,127 @@ plot4 <- ggplot(data4, aes(x = year, y = median_price, colour = city)) +
 plot4
 ```
 
-What can you infer from these plots? Don't just explain what's in the graph, but speculate or tell a short story (1-2 paragraphs max).
+What can you infer from these plots?
 
 > The analysis above shows that San Francisco owns up more than quarter of the total rental listings in the Bay area. In particularly san francisco, we can see that the prices for different types of bedrooms all show increasing trends and as the number of beds increase the price trends get steeper signifying that rentals with more beds has more price increase over the years. The price increase may be attributed to factors like inflation and increasing demand.
+
+# Challenge 1: Replicating a chart
+
+The purpose of this exercise is to reproduce a plot using your `dplyr` and `ggplot2` skills. It builds on exercise 1, the San Francisco rentals data.
+
+You have to create a graph that calculates the cumulative % change for 0-, 1-1, and 2-bed flats between 2000 and 2018 for the top twelve cities in Bay Area, by number of ads that appeared in Craigslist. 
+
+```{r challenge_1}
+# code to extract top 12 cities
+data_chl1 <- rent %>% 
+             group_by(city) %>% # grouped at city level
+             summarise(classifieds_city = count(city)) %>% # number of listings by city
+             mutate(classifieds = classifieds_city/sum(classifieds_city)) %>% #% of listings by city
+             slice_max(order_by = classifieds, n = 12) %>% # select top 12 cities by % of listings
+             pull(city) #extract
+
+# data creation
+target <- c(0, 1, 2) # filter of number of beds
+data_chl2 <- rent %>% 
+             filter((beds %in% target)&(city %in% data_chl1)) %>% # filter for beds and city
+             group_by(city,beds, year) %>% # grouped at city, beds and year level
+             summarise(median_price = median(price)) %>% # calculate median prices
+             mutate(percentage_change = ((median_price/lag(median_price) - 1))) %>% # calculate % change 
+             mutate(cum_sum = cumsum(coalesce(percentage_change, 1))) # cumsum of % change, replace NA with 1
+
+# plot graph
+plot_chl1 <- ggplot(data_chl2, aes(x = year, y = cum_sum, colour = city)) + 
+             geom_line() + 
+             facet_grid(beds ~ city) + 
+             scale_y_continuous(labels = scales::percent_format(accuracy = 1)) + 
+             theme(legend.position="none", axis.text.x=element_text(angle=90)) +
+             labs(title = "Cumulative % change in 0, 1, and 2-bed rentals in Bay Area", 
+                  subtitle = "2000-2018",
+                  x = NULL,
+                  y = NULL)
+
+plot_chl1
+```
+
+# Challenge 2: 2016 California Contributors plots
+
+As discussed in class, I would like you to reproduce the plot that shows the top ten cities in highest amounts raised in political contributions in California during the 2016 US Presidential election.
+
+```{r challenge2, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here::here("images", "challenge2.png"), error = FALSE)
+```
+
+To get this plot, you must join two dataframes; the one you have with all contributions, and data that can translate zipcodes to cities. You can find a file with all US zipcodes, e.g., here <http://www.uszipcodelist.com/download.html>.
+
+The easiest way would be to create two plots and then place one next to each other. For this, you will need the `patchwork` package. <https://cran.r-project.org/web/packages/patchwork/index.html>
+
+While this is ok, what if one asked you to create the same plot for the top 10 candidates and not just the top two? The most challenging part is how to reorder within categories, and for this you will find Julia Silge's post on [REORDERING AND FACETTING FOR GGPLOT2](https://juliasilge.com/blog/reorder-within/) useful.
+
+```{r, load_CA_data_1, warnings= FALSE, message=FALSE}
+# Make sure you use vroom() as it is significantly faster than read.csv()
+CA_contributors_2016 <- vroom::vroom(here::here("data","CA_contributors_2016.csv"))
+
+CA_contributions <- CA_contributors_2016 %>% mutate(zip = as.character(zip))
+
+zipcodes <- vroom::vroom(here::here("data","zip_code_database.csv"))
+
+CA_zip <- left_join(CA_contributions, zipcodes, by = "zip")
+
+hillary <- CA_zip %>%
+              filter(cand_nm == "Clinton, Hillary Rodham") %>% #filter by candidate name
+              group_by(cand_nm, primary_city) %>% #group at candidate and city level
+              summarize(cont = sum(contb_receipt_amt)) %>% #sum of amount contributed
+              top_n(cont, n = 10) %>% #slice for top 10
+              mutate(primary_city = fct_reorder(primary_city, cont)) %>% #reorder city according to contribution
+              ggplot(mapping = aes(x = cont, y = primary_city)) + #plotting
+              geom_col(fill = "light blue") + #colour
+              scale_x_continuous(labels = scales::dollar_format()) + 
+              labs(title = "Clinton, Hillary Rodham") +
+              theme(axis.title.x = element_blank(),
+                    axis.title.y = element_blank())
+
+trump <- CA_zip %>%
+              filter(cand_nm == "Trump, Donald J.") %>%
+              group_by(cand_nm, primary_city) %>%
+              summarize(cont = sum(contb_receipt_amt)) %>%
+              top_n(cont, n = 10) %>%
+              mutate(primary_city = fct_reorder(primary_city, cont)) %>%
+              ggplot(mapping = aes(x = cont, y = primary_city)) +
+              geom_col(fill = "light green") +
+              scale_x_continuous(labels = scales::dollar_format()) + 
+              labs(title = "Trump, Donald J.") +
+              theme(axis.title.x = element_blank(), 
+                    axis.title.y = element_blank()) 
+
+hillary + trump +
+  plot_annotation(title = "Where did candidates raise most money?",
+                  caption = "Amount raised")
+
+```
+```{r, load_CA_data_2, warnings= FALSE, message=FALSE}
+
+# Plots for top 10 candidates
+ten_list <- CA_zip %>%
+          group_by(cand_nm) %>%
+          summarize(cont = sum(contb_receipt_amt)) %>%
+          top_n(cont, n = 10)
+
+ten <- CA_zip %>%
+        filter(cand_nm == ten_list$cand_nm) %>%
+        group_by(cand_nm, primary_city) %>%
+        summarize(cont = sum(contb_receipt_amt)) %>%
+        top_n(cont, n = 10) %>%
+        mutate(primary_city = reorder_within(primary_city, cont, cand_nm)) %>%
+        ggplot(mapping = aes(x = cont, y = primary_city, fill = cand_nm)) + 
+        geom_col(show.legend = FALSE) + 
+        scale_fill_viridis(discrete = TRUE, option = "D") +
+        scale_x_continuous(labels = scales::dollar_format()) + 
+        facet_wrap(~cand_nm, scales = "free") + 
+        scale_y_reordered() +
+        labs(x = "Amount Raised",
+             y = NULL,
+             title = "Where did tep ten candidates raise most money in California? ",
+             subtitle = "Based on 2016 Presidential election")
+  
+ten
+```

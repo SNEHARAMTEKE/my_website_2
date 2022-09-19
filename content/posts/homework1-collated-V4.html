@@ -2,11 +2,11 @@
 # categories:
 # - tranquilpeak
 # - showcase
-date: "2022-09-18"
-slug: EDA in RS
+date: "2022-09-13"
+slug: EDA in R
 thumbnailImage: images/eda.jpg
 thumbnailImagePosition: left
-title: EDA in RS
+title: EDA in R
 ---
 
 
@@ -116,21 +116,12 @@ title: EDA in RS
 <p>The dataset was used in a recent <a href="https://github.com/rfordatascience/tidytuesday">tidyTuesday</a> project.</p>
 <pre class="r"><code># download directly off tidytuesdaygithub repo
 
-rent &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-07-05/rent.csv&#39;)
-## Rows: 200796 Columns: 17
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr (8): post_id, nhood, city, county, address, title, descr, details
-## dbl (9): date, year, price, beds, baths, sqft, room_in_apt, lat, lon
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+rent &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-07-05/rent.csv&#39;)</code></pre>
 <p>What are the variable types? Do they all correspond to what they really are? Which variables have most missing values?</p>
 <blockquote>
 <p>There are mainly two types of variables double(numeric) and character(categorical). All the columns except date and year have correct datatypes. Dates can be converted to time data types to facilitate time series analysis. Description variable has the most missing values.</p>
 </blockquote>
-<pre class="r"><code># YOUR CODE GOES HERE
-skimr::skim(rent)</code></pre>
+<pre class="r"><code>skimr::skim(rent)</code></pre>
 <table style="width: auto;" class="table table-condensed">
 <caption>
 (#tab:skim_data)Data summary
@@ -499,25 +490,25 @@ date
 1.00
 </td>
 <td style="text-align:right;">
-20095718.38
+2.01e+07
 </td>
 <td style="text-align:right;">
 44694.07
 </td>
 <td style="text-align:right;">
-20000902.00
+2.00e+07
 </td>
 <td style="text-align:right;">
-20050227.00
+2.01e+07
 </td>
 <td style="text-align:right;">
-20110924.00
+2.01e+07
 </td>
 <td style="text-align:right;">
-20120805.0
+2.01e+07
 </td>
 <td style="text-align:right;">
-20180717.00
+2.02e+07
 </td>
 <td style="text-align:left;">
 ▁▇▁▆▃
@@ -534,25 +525,25 @@ year
 1.00
 </td>
 <td style="text-align:right;">
-2009.51
+2.01e+03
 </td>
 <td style="text-align:right;">
 4.48
 </td>
 <td style="text-align:right;">
-2000.00
+2.00e+03
 </td>
 <td style="text-align:right;">
-2005.00
+2.00e+03
 </td>
 <td style="text-align:right;">
-2011.00
+2.01e+03
 </td>
 <td style="text-align:right;">
-2012.0
+2.01e+03
 </td>
 <td style="text-align:right;">
-2018.00
+2.02e+03
 </td>
 <td style="text-align:left;">
 ▁▇▁▆▃
@@ -569,25 +560,25 @@ price
 1.00
 </td>
 <td style="text-align:right;">
-2135.36
+2.14e+03
 </td>
 <td style="text-align:right;">
 1427.75
 </td>
 <td style="text-align:right;">
-220.00
+2.20e+02
 </td>
 <td style="text-align:right;">
-1295.00
+1.30e+03
 </td>
 <td style="text-align:right;">
-1800.00
+1.80e+03
 </td>
 <td style="text-align:right;">
-2505.0
+2.50e+03
 </td>
 <td style="text-align:right;">
-40000.00
+4.00e+04
 </td>
 <td style="text-align:left;">
 ▇▁▁▁▁
@@ -604,25 +595,25 @@ beds
 0.97
 </td>
 <td style="text-align:right;">
-1.89
+1.89e+00
 </td>
 <td style="text-align:right;">
 1.08
 </td>
 <td style="text-align:right;">
-0.00
+0.00e+00
 </td>
 <td style="text-align:right;">
-1.00
+1.00e+00
 </td>
 <td style="text-align:right;">
-2.00
+2.00e+00
 </td>
 <td style="text-align:right;">
-3.0
+3.00e+00
 </td>
 <td style="text-align:right;">
-12.00
+1.20e+01
 </td>
 <td style="text-align:left;">
 ▇▂▁▁▁
@@ -639,25 +630,25 @@ baths
 0.21
 </td>
 <td style="text-align:right;">
-1.68
+1.68e+00
 </td>
 <td style="text-align:right;">
 0.69
 </td>
 <td style="text-align:right;">
-1.00
+1.00e+00
 </td>
 <td style="text-align:right;">
-1.00
+1.00e+00
 </td>
 <td style="text-align:right;">
-2.00
+2.00e+00
 </td>
 <td style="text-align:right;">
-2.0
+2.00e+00
 </td>
 <td style="text-align:right;">
-8.00
+8.00e+00
 </td>
 <td style="text-align:left;">
 ▇▁▁▁▁
@@ -674,25 +665,25 @@ sqft
 0.32
 </td>
 <td style="text-align:right;">
-1201.83
+1.20e+03
 </td>
 <td style="text-align:right;">
 5000.22
 </td>
 <td style="text-align:right;">
-80.00
+8.00e+01
 </td>
 <td style="text-align:right;">
-750.00
+7.50e+02
 </td>
 <td style="text-align:right;">
-1000.00
+1.00e+03
 </td>
 <td style="text-align:right;">
-1360.0
+1.36e+03
 </td>
 <td style="text-align:right;">
-900000.00
+9.00e+05
 </td>
 <td style="text-align:left;">
 ▇▁▁▁▁
@@ -709,25 +700,25 @@ room_in_apt
 1.00
 </td>
 <td style="text-align:right;">
-0.00
+0.00e+00
 </td>
 <td style="text-align:right;">
 0.04
 </td>
 <td style="text-align:right;">
-0.00
+0.00e+00
 </td>
 <td style="text-align:right;">
-0.00
+0.00e+00
 </td>
 <td style="text-align:right;">
-0.00
+0.00e+00
 </td>
 <td style="text-align:right;">
-0.0
+0.00e+00
 </td>
 <td style="text-align:right;">
-1.00
+1.00e+00
 </td>
 <td style="text-align:left;">
 ▇▁▁▁▁
@@ -744,25 +735,25 @@ lat
 0.04
 </td>
 <td style="text-align:right;">
-37.67
+3.77e+01
 </td>
 <td style="text-align:right;">
 0.35
 </td>
 <td style="text-align:right;">
-33.57
+3.36e+01
 </td>
 <td style="text-align:right;">
-37.40
+3.74e+01
 </td>
 <td style="text-align:right;">
-37.76
+3.78e+01
 </td>
 <td style="text-align:right;">
-37.8
+3.78e+01
 </td>
 <td style="text-align:right;">
-40.43
+4.04e+01
 </td>
 <td style="text-align:left;">
 ▁▁▅▇▁
@@ -779,25 +770,25 @@ lon
 0.02
 </td>
 <td style="text-align:right;">
--122.21
+-1.22e+02
 </td>
 <td style="text-align:right;">
 0.78
 </td>
 <td style="text-align:right;">
--123.20
+-1.23e+02
 </td>
 <td style="text-align:right;">
--122.42
+-1.22e+02
 </td>
 <td style="text-align:right;">
--122.26
+-1.22e+02
 </td>
 <td style="text-align:right;">
--122.0
+-1.22e+02
 </td>
 <td style="text-align:right;">
--74.20
+-7.42e+01
 </td>
 <td style="text-align:left;">
 ▇▁▁▁▁
@@ -825,7 +816,7 @@ plot1 &lt;- ggplot(data1, aes(x = classifieds, y = fct_reorder(city, classifieds
               y = &quot;City&quot;)
 
 plot1</code></pre>
-<p><img src="/posts/homework1-collated-V4_files/figure-html/top_cities-1.png" width="672" /></p>
+<p><img src="/posts/homework1-collated-V4_files/figure-html/top_cities-1.png" width="648" style="display: block; margin: auto;" /></p>
 <p>Make a plot that shows the evolution of median prices in San Francisco for 0, 1, 2, and 3 bedrooms listings. The final graph should look like this</p>
 <pre class="r"><code># data creation
 target &lt;- c(0, 1, 2, 3) # beds vector to filter
@@ -833,8 +824,6 @@ data2 &lt;- rent %&gt;%
   filter((city == &quot;san francisco&quot;)&amp;(beds %in% target)) %&gt;% # filter by city and number of beds
   group_by(year, beds) %&gt;% # grouped at year and bed level
   summarise(median_price = median(price)) # calculate median price
-## `summarise()` has grouped output by &#39;year&#39;. You can override using the
-## `.groups` argument.
 
 # plot creation
 plot2 &lt;- ggplot(data2, aes(x = year, y = median_price, colour = beds)) + 
@@ -848,7 +837,7 @@ plot2 &lt;- ggplot(data2, aes(x = year, y = median_price, colour = beds)) +
               y = &quot;Median Price&quot;)
 
 plot2</code></pre>
-<p><img src="/posts/homework1-collated-V4_files/figure-html/sf_median_prices-1.png" width="672" /></p>
+<p><img src="/posts/homework1-collated-V4_files/figure-html/sf_median_prices-1.png" width="648" style="display: block; margin: auto;" /></p>
 <p>Finally, make a plot that shows median rental prices for the top 12 cities in the Bay area. Your final graph should look like this</p>
 <pre class="r"><code># code to extract top 12 cities
 data5 &lt;- rent %&gt;% 
@@ -863,8 +852,6 @@ data4 &lt;- rent %&gt;%
          filter((beds == 1)&amp;(city %in% data5)) %&gt;% #filter for 1 bed and top 12 city
          group_by(city, year) %&gt;% #grouped at city and year level
          summarise(median_price = median(price)) #calculate median price
-## `summarise()` has grouped output by &#39;city&#39;. You can override using the
-## `.groups` argument.
 
 # plot graph
 plot4 &lt;- ggplot(data4, aes(x = year, y = median_price, colour = city)) + 
@@ -878,9 +865,116 @@ plot4 &lt;- ggplot(data4, aes(x = year, y = median_price, colour = city)) +
               y = &quot;Median Price&quot;)
 
 plot4</code></pre>
-<p><img src="/posts/homework1-collated-V4_files/figure-html/spirit_plot-1.png" width="672" /></p>
-<p>What can you infer from these plots? Don’t just explain what’s in the graph, but speculate or tell a short story (1-2 paragraphs max).</p>
+<p><img src="/posts/homework1-collated-V4_files/figure-html/spirit_plot-1.png" width="648" style="display: block; margin: auto;" /></p>
+<p>What can you infer from these plots?</p>
 <blockquote>
 <p>The analysis above shows that San Francisco owns up more than quarter of the total rental listings in the Bay area. In particularly san francisco, we can see that the prices for different types of bedrooms all show increasing trends and as the number of beds increase the price trends get steeper signifying that rentals with more beds has more price increase over the years. The price increase may be attributed to factors like inflation and increasing demand.</p>
 </blockquote>
+</div>
+<div id="challenge-1-replicating-a-chart" class="section level1">
+<h1>Challenge 1: Replicating a chart</h1>
+<p>The purpose of this exercise is to reproduce a plot using your <code>dplyr</code> and <code>ggplot2</code> skills. It builds on exercise 1, the San Francisco rentals data.</p>
+<p>You have to create a graph that calculates the cumulative % change for 0-, 1-1, and 2-bed flats between 2000 and 2018 for the top twelve cities in Bay Area, by number of ads that appeared in Craigslist.</p>
+<pre class="r"><code># code to extract top 12 cities
+data_chl1 &lt;- rent %&gt;% 
+             group_by(city) %&gt;% # grouped at city level
+             summarise(classifieds_city = count(city)) %&gt;% # number of listings by city
+             mutate(classifieds = classifieds_city/sum(classifieds_city)) %&gt;% #% of listings by city
+             slice_max(order_by = classifieds, n = 12) %&gt;% # select top 12 cities by % of listings
+             pull(city) #extract
+
+# data creation
+target &lt;- c(0, 1, 2) # filter of number of beds
+data_chl2 &lt;- rent %&gt;% 
+             filter((beds %in% target)&amp;(city %in% data_chl1)) %&gt;% # filter for beds and city
+             group_by(city,beds, year) %&gt;% # grouped at city, beds and year level
+             summarise(median_price = median(price)) %&gt;% # calculate median prices
+             mutate(percentage_change = ((median_price/lag(median_price) - 1))) %&gt;% # calculate % change 
+             mutate(cum_sum = cumsum(coalesce(percentage_change, 1))) # cumsum of % change, replace NA with 1
+
+# plot graph
+plot_chl1 &lt;- ggplot(data_chl2, aes(x = year, y = cum_sum, colour = city)) + 
+             geom_line() + 
+             facet_grid(beds ~ city) + 
+             scale_y_continuous(labels = scales::percent_format(accuracy = 1)) + 
+             theme(legend.position=&quot;none&quot;, axis.text.x=element_text(angle=90)) +
+             labs(title = &quot;Cumulative % change in 0, 1, and 2-bed rentals in Bay Area&quot;, 
+                  subtitle = &quot;2000-2018&quot;,
+                  x = NULL,
+                  y = NULL)
+
+plot_chl1</code></pre>
+<p><img src="/posts/homework1-collated-V4_files/figure-html/challenge_1-1.png" width="648" style="display: block; margin: auto;" /></p>
+</div>
+<div id="challenge-2-2016-california-contributors-plots" class="section level1">
+<h1>Challenge 2: 2016 California Contributors plots</h1>
+<p>As discussed in class, I would like you to reproduce the plot that shows the top ten cities in highest amounts raised in political contributions in California during the 2016 US Presidential election.</p>
+<p><img src="../../images/challenge2.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>To get this plot, you must join two dataframes; the one you have with all contributions, and data that can translate zipcodes to cities. You can find a file with all US zipcodes, e.g., here <a href="http://www.uszipcodelist.com/download.html" class="uri">http://www.uszipcodelist.com/download.html</a>.</p>
+<p>The easiest way would be to create two plots and then place one next to each other. For this, you will need the <code>patchwork</code> package. <a href="https://cran.r-project.org/web/packages/patchwork/index.html" class="uri">https://cran.r-project.org/web/packages/patchwork/index.html</a></p>
+<p>While this is ok, what if one asked you to create the same plot for the top 10 candidates and not just the top two? The most challenging part is how to reorder within categories, and for this you will find Julia Silge’s post on <a href="https://juliasilge.com/blog/reorder-within/">REORDERING AND FACETTING FOR GGPLOT2</a> useful.</p>
+<pre class="r"><code># Make sure you use vroom() as it is significantly faster than read.csv()
+CA_contributors_2016 &lt;- vroom::vroom(here::here(&quot;data&quot;,&quot;CA_contributors_2016.csv&quot;))
+
+CA_contributions &lt;- CA_contributors_2016 %&gt;% mutate(zip = as.character(zip))
+
+zipcodes &lt;- vroom::vroom(here::here(&quot;data&quot;,&quot;zip_code_database.csv&quot;))
+
+CA_zip &lt;- left_join(CA_contributions, zipcodes, by = &quot;zip&quot;)
+
+hillary &lt;- CA_zip %&gt;%
+              filter(cand_nm == &quot;Clinton, Hillary Rodham&quot;) %&gt;% #filter by candidate name
+              group_by(cand_nm, primary_city) %&gt;% #group at candidate and city level
+              summarize(cont = sum(contb_receipt_amt)) %&gt;% #sum of amount contributed
+              top_n(cont, n = 10) %&gt;% #slice for top 10
+              mutate(primary_city = fct_reorder(primary_city, cont)) %&gt;% #reorder city according to contribution
+              ggplot(mapping = aes(x = cont, y = primary_city)) + #plotting
+              geom_col(fill = &quot;light blue&quot;) + #colour
+              scale_x_continuous(labels = scales::dollar_format()) + 
+              labs(title = &quot;Clinton, Hillary Rodham&quot;) +
+              theme(axis.title.x = element_blank(),
+                    axis.title.y = element_blank())
+
+trump &lt;- CA_zip %&gt;%
+              filter(cand_nm == &quot;Trump, Donald J.&quot;) %&gt;%
+              group_by(cand_nm, primary_city) %&gt;%
+              summarize(cont = sum(contb_receipt_amt)) %&gt;%
+              top_n(cont, n = 10) %&gt;%
+              mutate(primary_city = fct_reorder(primary_city, cont)) %&gt;%
+              ggplot(mapping = aes(x = cont, y = primary_city)) +
+              geom_col(fill = &quot;light green&quot;) +
+              scale_x_continuous(labels = scales::dollar_format()) + 
+              labs(title = &quot;Trump, Donald J.&quot;) +
+              theme(axis.title.x = element_blank(), 
+                    axis.title.y = element_blank()) 
+
+hillary + trump +
+  plot_annotation(title = &quot;Where did candidates raise most money?&quot;,
+                  caption = &quot;Amount raised&quot;)</code></pre>
+<p><img src="/posts/homework1-collated-V4_files/figure-html/load_CA_data_1-1.png" width="648" style="display: block; margin: auto;" /></p>
+<pre class="r"><code># Plots for top 10 candidates
+ten_list &lt;- CA_zip %&gt;%
+          group_by(cand_nm) %&gt;%
+          summarize(cont = sum(contb_receipt_amt)) %&gt;%
+          top_n(cont, n = 10)
+
+ten &lt;- CA_zip %&gt;%
+        filter(cand_nm == ten_list$cand_nm) %&gt;%
+        group_by(cand_nm, primary_city) %&gt;%
+        summarize(cont = sum(contb_receipt_amt)) %&gt;%
+        top_n(cont, n = 10) %&gt;%
+        mutate(primary_city = reorder_within(primary_city, cont, cand_nm)) %&gt;%
+        ggplot(mapping = aes(x = cont, y = primary_city, fill = cand_nm)) + 
+        geom_col(show.legend = FALSE) + 
+        scale_fill_viridis(discrete = TRUE, option = &quot;D&quot;) +
+        scale_x_continuous(labels = scales::dollar_format()) + 
+        facet_wrap(~cand_nm, scales = &quot;free&quot;) + 
+        scale_y_reordered() +
+        labs(x = &quot;Amount Raised&quot;,
+             y = NULL,
+             title = &quot;Where did tep ten candidates raise most money in California? &quot;,
+             subtitle = &quot;Based on 2016 Presidential election&quot;)
+  
+ten</code></pre>
+<p><img src="/posts/homework1-collated-V4_files/figure-html/load_CA_data_2-1.png" width="648" style="display: block; margin: auto;" /></p>
 </div>

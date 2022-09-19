@@ -220,7 +220,7 @@ Also, note that the `type` argument within generate is set to permute, which is 
 
 We can visualize this null distribution with the following code:
 
-```{r}
+```{r plot2}
 ggplot(data = null_dist, aes(x = stat)) +
   geom_histogram()
 
@@ -231,7 +231,7 @@ Now that the test is initialized and the null distribution formed, we can visual
 
 We can also calculate the p-value for your hypothesis test using the function `infer::get_p_value()`.
 
-```{r}
+```{r pvalue}
 
 null_dist %>% visualize() +
   shade_p_value(obs_stat = obs_diff, direction = "two-sided")
@@ -378,7 +378,7 @@ Note that you can perform different types of analyses, and check whether they al
 .	Correlation analysis
 .	Regression
 
-```{r}
+```{r ci}
 # Confidence interval and hypothesis testing
 t.test(omega %>% 
          filter (gender == 'male') %>%
@@ -391,7 +391,7 @@ t.test(omega %>%
 >The p-value is close to 0, so we reject the null hypothesis, which means that we have strong evidence that mean salaries for men and women are different.
 >Also, confidence interval does not include 0, which again indicates that mean salaries between men and women are different.
 
-```{r}  
+```{r corr}  
 # Correlation analysis
 omega_num <- omega %>% 
 mutate(gender_01 = ifelse(gender=='male', 1, 0)) %>% # convert gender to numerical variable
@@ -403,7 +403,7 @@ omega_num
 
 >Correlation coefficient is 0.508 indicates weak correlation between gender and salary.
 
-```{r}  
+```{r regress}  
 # Regression
 lm_omega <- lm(formula = salary ~ gender, data = omega) # run a linear regression of salary on gender
 summary(lm_omega)
@@ -466,7 +466,7 @@ Based on this evidence, can you conclude that there is a significant difference 
 
 The standard deviation is pretty high, so we should definitely perform additional analyses to make a conclusion.
 
-```{r}
+```{r ciht}
 # Confidence interval and hypothesis testing
 t.test(omega %>% 
          filter (gender == 'male') %>%
@@ -479,7 +479,7 @@ The p-value is close to 0, so we reject the null hypothesis, which means that we
 
 Just as in case of salary, confidence interval does not include 0, which again indicates different mean experience for men and women.
 
-```{r}  
+```{r ca}  
 # Correlation analysis
 omega_num_exp <- omega %>% 
 mutate(gender_01 = ifelse(gender=='male', 1, 0)) %>% # convert gender to numerical variable
@@ -491,7 +491,7 @@ cor()
 ```
 Correlation coefficient of 0.584 indicates moderate correlation between gender and experience.
 
-```{r}  
+```{r lm}  
 # Regression
 lm_omega_2 <- lm(formula = experience ~ gender_01, data = omega_num_exp) # run a linear regression of experience on gender
 summary(lm_omega_2)
@@ -500,7 +500,7 @@ Base on the R-squared value, we can say that 32% of variation in experience is e
 
 We can make a multiple regression model.
 
-```{r}  
+```{r lm2}  
 # Regression
 lm_omega_2 <- lm(formula = salary ~ gender_01 + experience, data = omega_num_exp) # run a linear regression of experience on gender
 summary(lm_omega_2)
@@ -521,7 +521,7 @@ ggplot(data = omega, aes(x = experience, y = salary))+
 
 ```
 It seems like there is a positive relationship between experience and salary. 
-```{r}
+```{r lm3}
 # Regression
 lm_omega_2 <- lm(formula = salary ~ experience, data = omega_num_exp) # run a linear regression of experience on gender
 summary(lm_omega_2)

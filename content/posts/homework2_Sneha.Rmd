@@ -369,8 +369,6 @@ This is a very rich data set, not just for energy and CO2 data, but for many oth
 First, produce a graph with the countries with the highest and lowest % contribution of renewables in energy production. This is made up of `elec_hydro`, `elec_solar`, `elec_wind`, and `elec_renew_other`. You may want to use the *patchwork* package to assemble the two charts next to each other.
  
 ```{r min-max_renewables, out.width="100%"}
-knitr::include_graphics(here::here("images", "renewables.png"), error = FALSE)
-
 energy_select <- c('elec_hydro', 'elec_solar', 'elec_wind', 'elec_renew_other')
 
 energy_analysis1 <- energy %>% 
